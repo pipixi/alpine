@@ -1,3 +1,3 @@
 FROM alpine
 USER root
-RUN set -x && apk add --no-cache docker-cli openjdk8-jre=8
+RUN set -x && apk add --no-cache docker-cli openjdk8-jre
