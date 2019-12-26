@@ -1,7 +1,3 @@
 FROM alpine
-ARG VEERSION=3.9
 USER root
-RUN apk add --no-cache docker-cli \
-  && wget -o agent.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
-  && chmod 777 agent.jar \
-  && apk del curl
+RUN apk add --no-cache docker-cli
