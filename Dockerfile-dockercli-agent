@@ -1,3 +1,9 @@
-FROM jenkins/jnlp-slave:3.35-2-alpine
+FROM alpine
+ARG VEERSION=3.9
 USER root
-RUN apk --no-cache update && apk add --no-cache docker-cli
+RUN apk add --update --no-cache curl docker-cli \
+  && curl --create-dirs -fsSLo /usr/share/jenkins/agent.jar https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
+  && chmod 755 /usr/share/jenkins \
+  && chmod 644 /usr/share/jenkins/agent.jar \
+  && ln -sf /usr/share/jenkins/agent.jar /usr/share/jenkins/slave.jar \
+  && apk del curl
